@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme('colors.primary.900');
+    border-right-color: theme('colors.primary.200');
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid theme('colors.primary.200');
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+
+.fc-day-today {
+  background-color: rgba(212, 222, 231, 0.35) !important; /* PRIMARY_100 @35% */
+}
+
+.fc-event {
+  background-color: rgba(198, 153, 99, 0.25) !important; /* ACCENT_500 @16% */
+  border-color: rgba(198, 153, 99, 0.45) !important;
+  color: theme('colors.primary.900') !important;
+}
+
+.fc-event.event-own {
+  background-color: rgba(198, 153, 99, 0.4) !important;
+  border-color: #B78343 !important;                      
+  border-width: 2px !important;                          
+  color: #1B2631 !important;                            
+}
+
+.fc-event.event-own .fc-event-title,
+.fc-event.event-own .fc-event-time,
+.fc-event.event-own .fc-event-main {
+  font-weight: 600 !important;
+}
+
+.fc-event-title,
+.fc-event-main,
+.fc-event-main-frame,
+.fc-event-title-container,
+.fc-event-time,
+.fc-event-title {
+  color: theme('colors.primary.900') !important;
+}
+
+.fc-button {
+  background-color: theme('colors.accent.500') !important;
+  border-color: theme('colors.accent.600') !important;
+}
+
+.fc-button:hover {
+  background-color: theme('colors.accent.600') !important;
+}
+
+.fc-daygrid-day-number {
+  color: theme('colors.primary.900') !important;
+  font-weight: bold !important;
+}
+
+.fc-daygrid-day,
+.fc-week-day,
+.fc-day,
+.fc-timegrid-slot,
+.fc-list-day {
+  cursor: pointer !important;
+}
+
+.fc-daygrid-day:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+  transition: box-shadow 0.2s ease-in-out !important;
+}
