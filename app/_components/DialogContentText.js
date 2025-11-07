@@ -24,8 +24,9 @@ export default function DialogContentText({ selectedRange, sessionType, location
           <div className='flex gap-2 items-center justify-between'>
             <label className='text-lg text-primary-900'>Location:</label>
             <select value={location} onChange={(e) => setLocation(e.target.value)} className='px-3 py-2 text-primary-900 w-1/2 rounded-lg' name="location" id="location">
-              <option value="kallang">Kallang</option>
-              <option value="burghley">Burghley</option>
+              <option value="Kallang">Kallang</option>
+              <option value="Burghley">Burghley</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>
