@@ -57,7 +57,7 @@ export default function OtherPage() {
         <Link href="https://actioncures.netlify.app" target="_blank" >
           <div className='flex flex-col gap-4 justify-center items-center'>
             <Image src={logoACF} height={150} alt="ACF logo" quality={80} />
-            <p className="text-lg text-center md:text-xl hover:text-accent-600 ease-in-out duration-300">Former private website/travelling diary</p>
+            <p className="text-lg text-center md:text-xl hover:text-accent-600 ease-in-out duration-300">Travelling diary</p>
           </div>
         </Link>
       </div>
