@@ -37,9 +37,10 @@ export default function MembersPage() {
   }, [bookings])
 
   if (!member) {
-    return <div className='flex flex-col justify-center items-center h-full gap-2'>
+    return <div className='flex flex-col justify-center items-center text-center h-full gap-2'>
       <p className='text-2xl font-medium'>Member not found.</p>
-      <p className="text-xl">Your member profile could not be loaded. Please contact <span className="text-accent-500 hover:text-accent-600 ease-in-out duration-300">singaporesquashcoach@gmail.com</span></p>
+      <p className="text-xl">Your member profile could not be loaded. Please refresh this page or try logging out and in again. </p>
+      <p className="text-xl">If the issue persists, please contact <span className="text-accent-500 hover:text-accent-600 ease-in-out duration-300">singaporesquashcoach@gmail.com</span></p>
     </div>
   }
 

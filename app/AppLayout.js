@@ -18,8 +18,21 @@ export default function AppLayout({ children }) {
   const [queryClient] = useState(() =>
     new QueryClient({
       queryCache: new QueryCache({
-        onError: (error) =>
+        onError: (error, query) => {
+          const isMemberQuery = query.queryKey?.[0] === 'auth' && query.queryKey?.[1] === 'member'
+          const isMemberBookingsQuery = query.queryKey?.[0] === 'bookings' && query.queryKey?.[1] !== undefined
+      
+          if (isMemberQuery && error?.message?.includes('Member could not be loaded')) {
+            if (query.state.fetchFailureCount >= 3) {
+              toast.error(`An error occurred: ${error.message}`)
+            }
+            return
+          }
+          if (isMemberBookingsQuery && error?.message?.includes('Bookings could not be loaded')) {
+            return
+          }
           toast.error(`An error occurred: ${error.message}`)
+        }
       }),
       mutationCache: new MutationCache({
         onError: (error) =>

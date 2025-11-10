@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 import { login, signup, createMember } from "@/app/_lib/data-service";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
 export default function LoginForm() {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +48,9 @@ export default function LoginForm() {
       const user = await signup({ email, password });
       if (user.user) {
         await createMember({ fullName: 'New Member', email: user.user.email });
+        await queryClient.refetchQueries({ 
+          queryKey: ['auth', 'member', user.user.email] 
+        });
         toast.success('Account created successfully! You are now logged in.');
         router.push('/members');
       }

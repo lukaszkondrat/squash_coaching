@@ -19,6 +19,13 @@ export function useAuth() {
     queryFn: () => getMember(session.user.email),
     enabled: !!session?.user?.email,
     staleTime: 1000 * 60 * 10,
+    retry: (failureCount, error) => {
+      if (failureCount < 3 && error?.message?.includes('Member could not be loaded')) {
+        return true
+      }
+      return false
+    },
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 3000),
   })
 
   const signOutMutation = useMutation({
@@ -38,6 +45,13 @@ export function useAuth() {
           queryClient.prefetchQuery({
             queryKey: ['auth', 'member', session.user.email],
             queryFn: () => getMember(session.user.email),
+            retry: (failureCount, error) => {
+              if (failureCount < 3 && error?.message?.includes('Member could not be loaded')) {
+                return true
+              }
+              return false
+            },
+            retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 3000),
           })
         }
       } else if (event === 'SIGNED_OUT') {
