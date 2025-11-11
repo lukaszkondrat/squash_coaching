@@ -135,8 +135,8 @@ export default function BookingsPage() {
           startTime: '06:00',
           endTime: '22:00',
         }}
-        selectMinDistance={isDesktop ? "01:00:00" : "00:30:00"}
-        selectMaxDistance="01:00:00"
+        selectMinDistance={isDesktop ? "01:00:00" : 10}
+        longPressDelay={isDesktop ? undefined : 100}
       />
     </Card>
     <Dialog

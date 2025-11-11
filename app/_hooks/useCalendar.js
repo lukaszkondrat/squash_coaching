@@ -33,12 +33,22 @@ export function useCalendar() {
     const calendarEl = calendarRef.current;
     if (calendarEl) {
       const calendarApi = calendarEl.getApi();
-      calendarApi.unselect();
-      setIsDialogOpen(true);
-      setSelectedRange({
-        start: new Date(arg.start),
-        end: new Date(arg.end),
-      });
+      
+      const start = new Date(arg.start);
+      const end = new Date(arg.end);
+      const durationMs = end - start;
+      const durationHours = durationMs / (1000 * 60 * 60);
+      
+      if (durationHours >= 1) {
+        setTimeout(() => {
+          setSelectedRange({
+            start: start,
+            end: end,
+          });
+          setIsDialogOpen(true);
+        }, 0);
+        calendarApi.unselect();
+      }
     }
   };
 

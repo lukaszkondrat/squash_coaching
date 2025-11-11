@@ -86,6 +86,7 @@
 
 .custom-calendar-styles {
   touch-action: auto !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .custom-calendar-styles .fc-scroller {
@@ -96,11 +97,22 @@
 .custom-calendar-styles .fc-timegrid-slot,
 .custom-calendar-styles .fc-timegrid-slot-lane {
   touch-action: auto !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .custom-calendar-styles .fc-timegrid-col,
 .custom-calendar-styles .fc-timegrid-col-frame {
   touch-action: auto !important;
+}
+
+.custom-calendar-styles .fc-timegrid-col-events,
+.custom-calendar-styles .fc-timegrid-event-harness {
+  touch-action: auto !important;
+}
+
+.custom-calendar-styles .fc-timegrid-body {
+  user-select: none !important;
+  -webkit-user-select: none !important;
 }
 
 .fc-daygrid-day:hover {
