@@ -18,12 +18,20 @@ export default function Layout({ children }) {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const isPortraitMobile = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+      setIsMobile(isPortraitMobile);
     };
 
     checkIsMobile();
+    const handleOrientationChange = () => {
+      setTimeout(checkIsMobile, 100);
+    };
     window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
+    window.addEventListener('orientationchange', handleOrientationChange);
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+      window.removeEventListener('orientationchange', handleOrientationChange);
+    };
   }, []);
 
   if (loading) {

@@ -84,6 +84,25 @@
   cursor: pointer !important;
 }
 
+.custom-calendar-styles {
+  touch-action: auto !important;
+}
+
+.custom-calendar-styles .fc-scroller {
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: auto !important;
+}
+
+.custom-calendar-styles .fc-timegrid-slot,
+.custom-calendar-styles .fc-timegrid-slot-lane {
+  touch-action: auto !important;
+}
+
+.custom-calendar-styles .fc-timegrid-col,
+.custom-calendar-styles .fc-timegrid-col-frame {
+  touch-action: auto !important;
+}
+
 .fc-daygrid-day:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
   transition: box-shadow 0.2s ease-in-out !important;
